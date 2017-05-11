@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">JXUSTCourse</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">This is homepage</string>
+</resources>
