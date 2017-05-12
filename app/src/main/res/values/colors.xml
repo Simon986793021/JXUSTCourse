@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#0ED6F9</color>
+    <color name="colorPrimaryDark">#0ED6F9</color>
     <color name="colorAccent">#FF4081</color>
     <!-- 底栏字体颜色 -->
     <color name="footer_text_color_normal">#515151</color>
     <color name="footer_text_color_selected">#0ED6F9</color>
+    <color name="base_color_text_gray">#aa515151</color>
+    <color name="white">#fff</color>
+    <color name="gray">#515151</color>
+    <color name="common">#0ED6F9</color>
+    <color name="login_bg">#efefef</color>
+    <color name="black">#000</color>
+    <color name="input_bg">#fff</color>
+    <color name="view_line">#ccc</color>
+    <color name="hint_color">#ffdddddd</color>
 </resources>

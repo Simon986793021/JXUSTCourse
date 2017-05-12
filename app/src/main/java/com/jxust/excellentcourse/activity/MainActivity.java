@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.RadioGroup;
 
 import com.jxust.excellentcourse.R;
+import com.jxust.excellentcourse.base.BaseFragment;
 import com.jxust.excellentcourse.fragment.CourseFragment;
 import com.jxust.excellentcourse.fragment.HomePageFragment;
 import com.jxust.excellentcourse.fragment.MyFragment;
@@ -15,14 +17,14 @@ import com.jxust.excellentcourse.fragment.ResourseFragment;
 import java.util.Arrays;
 import java.util.List;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
     private  int curCursor;
     private RadioGroup radioGroup;
     private HomePageFragment homePageFragment=new HomePageFragment();
     private CourseFragment courseFragment=new CourseFragment();
     private ResourseFragment resourseFragment=new ResourseFragment();
     private MyFragment myFragment=new MyFragment();
-    private List<Fragment> fragmentList= Arrays.asList(homePageFragment,courseFragment,resourseFragment, myFragment);
+    private List<BaseFragment> fragmentList= Arrays.asList(homePageFragment,courseFragment,resourseFragment, myFragment);
     private android.app.FragmentManager fragmentManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

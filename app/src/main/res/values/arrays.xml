@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sp_sel_hobby">
+        <item>信息</item>
+        <item>外语</item>
+        <item>经管</item>
+        <item>建筑</item>
+        <item>材料</item>
+        <item>冶金</item>
+        <item>机械</item>
+        <item>电气</item>
+    </string-array>
+</resources>

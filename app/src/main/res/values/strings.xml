@@ -3,4 +3,6 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">This is homepage</string>
+    <string name="register_txt2">立即注册吧></string>
+    <string name="register_txt1">还没有账号？</string>
 </resources>
