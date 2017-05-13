@@ -15,4 +15,6 @@
     <color name="input_bg">#fff</color>
     <color name="view_line">#ccc</color>
     <color name="hint_color">#ffdddddd</color>
+    <color name="common_text_color">#515151</color>
+    <color name="userinfo_bg">#eee</color>
 </resources>

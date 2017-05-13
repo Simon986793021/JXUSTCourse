@@ -5,8 +5,10 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.RadioGroup;
 
+import com.avos.avoscloud.AVUser;
 import com.jxust.excellentcourse.R;
 import com.jxust.excellentcourse.base.BaseFragment;
 import com.jxust.excellentcourse.fragment.CourseFragment;
@@ -49,10 +51,16 @@ public class MainActivity extends AppCompatActivity {
                         curCursor = 2;
                         break;
                     case R.id.foot_bar_mime:
-                        Intent intent=new Intent(getApplicationContext(),LoginActivity.class);
-                        startActivity(intent);
-                        //curCursor = 3;
-
+                        if (AVUser.getCurrentUser()!=null)
+                        {
+                            Log.i(">>>",AVUser.getCurrentUser().toString());
+                            curCursor = 3;
+                        }
+                        else
+                        {
+                            Intent intent=new Intent(getApplicationContext(),LoginActivity.class);
+                            startActivity(intent);
+                        }
                         break;
                 }
                 addFragmentToStack(curCursor);
