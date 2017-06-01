@@ -48,7 +48,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener{
     private PasswordInputView verificationCode;
     private boolean isFinal=false;
     private Spinner sp;
-    private String[] mItems = {"信息", "外语", "经管", "建筑", "材料", "冶金", "机械", "电气"};
+    private String[] mItems = {"信息", "外语", "经管", "建筑", "材料", "冶金", "机械", "电气","文法","资环"};
     private String hobby;
     private Dialog dialog;
     @Override
@@ -175,7 +175,6 @@ public class RegisterActivity extends Activity implements View.OnClickListener{
 
 
     private void verifiyCode(String vCode) {
-
         if (vCode == null || vCode.equals("")) {
             Utils.showToast(RegisterActivity.this,"验证码不能为空");
             return;

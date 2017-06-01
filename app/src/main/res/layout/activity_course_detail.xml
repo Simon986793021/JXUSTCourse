@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/activity_common_toolbar"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/iv_course_detail_pic"
+        android:src="@drawable/coursedetailtop"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_course_detail"
+        android:textSize="18sp"
+        android:layout_weight="1"
+        android:padding="15sp"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="收藏"
+        android:textSize="18sp"
+        android:id="@+id/bt_like"
+        android:textColor="#fff"
+        android:layout_gravity="bottom"
+        android:background="@color/colorPrimary"/>
+</LinearLayout>

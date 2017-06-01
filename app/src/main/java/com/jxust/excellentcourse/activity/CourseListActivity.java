@@ -1,27 +1,23 @@
-package com.jxust.excellentcourse.fragment;
+package com.jxust.excellentcourse.activity;
 
-
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVQuery;
-import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.FindCallback;
 import com.jxust.excellentcourse.R;
 import com.jxust.excellentcourse.Utils.Utils;
-import com.jxust.excellentcourse.activity.CourseDetailActivity;
-import com.jxust.excellentcourse.activity.LoginActivity;
-import com.jxust.excellentcourse.base.BaseFragment;
-import com.panxw.android.imageindicator.ImageIndicatorView;
+import com.jxust.excellentcourse.adapter.CourseBaseAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,24 +25,34 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author Simon
- * @created 2017/2/14
+ * Created by Simon on 2017/5/14.
  */
-public class CourseFragment extends BaseFragment {
-    private ImageIndicatorView imageIndicatorView;
-    private ListView listView;
+
+public class CourseListActivity extends Activity {
+    private ListView courseshow;
+    private TextView back;
+    private TextView toolbarcenter;
+    private String academy;
     @Override
-    protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_course,container,false);
-        imageIndicatorView= (ImageIndicatorView) view.findViewById(R.id.indicate_view);
-        Utils.loadImage(imageIndicatorView);
-        listView= (ListView) view.findViewById(R.id.lv_fragment_study);
-        loadListViewData();
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_course_list);
+        courseshow= (ListView) findViewById(R.id.lv_activity_course);
+        back= (TextView) findViewById(R.id.tv_toolbar_lefttext);
+        toolbarcenter= (TextView) findViewById(R.id.tv_toolbar_centertext);
+        toolbarcenter.setText("精品课程");
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        academy=getIntent().getStringExtra("academy");
+        Utils.loadCourseFromAvo(courseshow,academy,CourseListActivity.this);
+        courseshow.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                AVUser user=AVUser.getCurrentUser();
-                String academy=user.get("academy").toString();
+
                 AVQuery<AVObject> query = new AVQuery<>("Course");
                 query.whereEqualTo("type",academy);
                 query.orderByAscending("createdAt");
@@ -55,7 +61,7 @@ public class CourseFragment extends BaseFragment {
                     public void done(List<AVObject> list, AVException e) {
                         if (list!=null)
                         {
-                            Intent intent=new Intent(mactivity,CourseDetailActivity.class);
+                            Intent intent=new Intent(CourseListActivity.this,CourseDetailActivity.class);
                             AVObject course=list.get(position);
                             String viewPerson=course.get("viewperson").toString();
                             Log.i("<<<",viewPerson);
@@ -73,20 +79,7 @@ public class CourseFragment extends BaseFragment {
                 });
             }
         });
-        return view;
     }
-    private void loadListViewData() {
-        String academy;
-        AVUser user=AVUser.getCurrentUser();
-        if (user!=null)
-        {
-            academy=user.get("academy").toString();
-            Utils.loadCourseFromAvo(listView,academy,mactivity);
 
-        }
-        else
-        {
-            startActivity(new Intent(mactivity,LoginActivity.class));
-        }
-    }
+
 }

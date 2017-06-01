@@ -26,7 +26,7 @@
         <RadioButton
             android:id="@+id/foot_bar_discover"
             style="@style/main_footbar_radio"
-            android:text="资源"
+            android:text="新闻"
             android:drawableTop="@drawable/footer_picture_resourse"/>
         <RadioButton
             android:id="@+id/foot_bar_mime"

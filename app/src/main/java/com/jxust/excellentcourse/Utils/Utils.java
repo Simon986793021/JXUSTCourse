@@ -5,16 +5,25 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.avos.avoscloud.AVException;
+import com.avos.avoscloud.AVObject;
+import com.avos.avoscloud.AVQuery;
+import com.avos.avoscloud.FindCallback;
 import com.jxust.excellentcourse.R;
+import com.jxust.excellentcourse.activity.CourseListActivity;
+import com.jxust.excellentcourse.adapter.CourseBaseAdapter;
 import com.panxw.android.imageindicator.AutoPlayManager;
 import com.panxw.android.imageindicator.ImageIndicatorView;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -119,5 +128,23 @@ public class Utils {
         dialog.show();
         return dialog;
     }
-
+    /*
+    获取不同学院的数据显示出来
+     */
+    public static void loadCourseFromAvo(final ListView courseshow, String academy, final Context context)
+    {
+        AVQuery<AVObject> query = new AVQuery<>("Course");
+        query.whereEqualTo("type",academy);
+        query.orderByAscending("createdAt");
+        query.findInBackground(new FindCallback<AVObject>() {
+            @Override
+            public void done(List<AVObject> list, AVException e) {
+                if (list!=null)
+                {
+                    CourseBaseAdapter courseBaseAdapter=new CourseBaseAdapter(list,context);
+                    courseshow.setAdapter(courseBaseAdapter);
+                }
+            }
+        });
+    }
 }

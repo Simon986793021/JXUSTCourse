@@ -17,4 +17,5 @@
     <color name="hint_color">#ffdddddd</color>
     <color name="common_text_color">#515151</color>
     <color name="userinfo_bg">#eee</color>
+    <color name="eee">#eee</color>
 </resources>

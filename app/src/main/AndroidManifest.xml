@@ -29,6 +29,13 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.MyInfoActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".activity.CourseDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.CourseListActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.NewsListActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.NewsDetailActivity"
+            android:screenOrientation="portrait"/>
     </application>
-
 </manifest>

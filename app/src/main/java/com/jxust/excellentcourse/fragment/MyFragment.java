@@ -57,6 +57,12 @@ public class MyFragment extends BaseFragment implements AdapterView.OnItemClickL
         list.add(map);
 
         map = new HashMap<>();
+        map.put("left", R.drawable.like);
+        map.put("center", "我的收藏");
+        map.put("right", R.drawable.gogogo);
+        list.add(map);
+
+        map = new HashMap<>();
         map.put("left", R.drawable.loginout);
         map.put("center", "退出登录");
         map.put("right", R.drawable.gogogo);
@@ -80,6 +86,8 @@ public class MyFragment extends BaseFragment implements AdapterView.OnItemClickL
                 }
                 break;
             case 1:
+                break;
+            case 2:
                 if (Utils.isNetworkAvailable(getActivity())) {
                     quitDialog();
                 } else {
